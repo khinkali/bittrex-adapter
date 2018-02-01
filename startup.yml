@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bittrex-adapter
+  labels:
+    app: bittrex-adapter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bittrex-adapter
+  template:
+    metadata:
+      labels:
+        app: bittrex-adapter
+    spec:
+      containers:
+      - name: bittrex-adapter
+        image: khinkali/bittrexadapter:0.0.2
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bittrex-adapter
+spec:
+  selector:
+    app: bittrex-adapter
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30080
+  type: NodePort
