@@ -1,4 +1,7 @@
 node {
-    stage "test"
-    sh "kubectl cluster-info"
+    stage('do some kubectl work') {
+        container('kubectl') {
+            sh "kubectl get nodes"
+        }
+    }
 }
