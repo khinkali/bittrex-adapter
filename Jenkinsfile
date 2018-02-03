@@ -8,7 +8,7 @@ podTemplate(label: 'mypod', containers: [
   ]) {
     node('mypod') {
 
-        stage('do some Docker work') {
+        /*stage('do some Docker work') {
             container('docker') {
 
                 withCredentials([[$class: 'UsernamePasswordMultiBinding',
@@ -24,7 +24,7 @@ podTemplate(label: 'mypod', containers: [
                     sh "docker push ${env.DOCKER_HUB_USER}/ubuntu:${env.BUILD_NUMBER} "
                 }
             }
-        }
+        }*/
 
         stage('do some kubectl work') {
             container('kubectl') {
