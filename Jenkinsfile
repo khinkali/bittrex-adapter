@@ -1,4 +1,5 @@
 node {
-    stage "test"
-    sh "kubectl --kubeconfig /admin.conf get no"
+    stage("test") {
+        sh "/usr/local/bin/kubectl --kubeconfig /admin.conf get no"
+    }
 }
