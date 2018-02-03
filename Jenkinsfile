@@ -26,11 +26,19 @@ podTemplate(label: 'mypod', containers: [
             }
         }*/
 
-        stage('do some kubectl work') {
+        /*stage('do some kubectl work') {
             container('kubectl') {
-              sh "kubectl cluster-info"
+
+                withCredentials([[$class: 'UsernamePasswordMultiBinding',
+                        credentialsId: 'dockerhub',
+                        usernameVariable: 'DOCKER_HUB_USER',
+                        passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
+
+                    sh "kubectl get nodes"
+                }
             }
-        }
+        }*/
+
         stage('do some helm work') {
             container('helm') {
 
